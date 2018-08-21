@@ -1,12 +1,11 @@
 require 'rspec'
 require_relative 'tdd_classes'
 require_relative '..\player_configuration'
-require_relative '..\interface'
 
 RSpec.describe PlayerConfiguration do   
 
     let(:player_configuration) { PlayerConfiguration.new(interface) }
-    let(:interface) { Interface.new(output, input) }
+    let(:interface) { FakeInterface.new(output, input) }
     let(:input) { FakeInput.new }
     let(:output) { FakeOutput.new }
 
@@ -26,11 +25,9 @@ RSpec.describe PlayerConfiguration do
     end
 
     it "shows error if player type entered is invalid" do
-
       input.this_one("anything that isn't h or c, mmm... x")
       player_configuration.player_request
       expect(output.message).to eq 'h for human or c for computer..'
-
     end
 
 end
