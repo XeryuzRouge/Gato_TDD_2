@@ -7,9 +7,9 @@ RSpec.describe Board do
   let(:empty) { " " }
 
   it 'Should return board status as default' do
-    default_status = { "7" => :empty, "8" => :empty, "9" => :empty,
-                       "4" => :empty, "5" => :empty, "6" => :empty,
-                       "1" => :empty, "2" => :empty, "3" => :empty }
+    default_status = { "7" => empty, "8" => empty, "9" => empty,
+                       "4" => empty, "5" => empty, "6" => empty,
+                       "1" => empty, "2" => empty, "3" => empty }
     expect(board.boxes).to eq default_status
   end
 

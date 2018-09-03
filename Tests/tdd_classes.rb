@@ -36,7 +36,7 @@ class FakeOutputInterface
 
   end
 
-  def output(this)
+  def send(this)
     output_manager.puts this
   end
 
