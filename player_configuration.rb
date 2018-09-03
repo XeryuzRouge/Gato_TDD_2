@@ -1,20 +1,23 @@
 
 class PlayerConfiguration
 
-  def initialize(interface)
-    @interface = interface
+  attr_reader :output_interface
+  attr_reader :input_interface
+
+  def initialize(output_interface, input_interface)
+    @output_interface = output_interface
+    @input_interface = input_interface
   end
 
   def player_request(player = 1)
-    interface.output 'player #{player}, human or computer? (h/c)'
-    option_selected = interface.input
+    system 'cls'
+    output_interface.send "player #{player}, human or computer? (h/c)"
+    option_selected = input_interface.receive
     return option_selected if acceptable_inputs.include? option_selected
-    interface.output 'h for human or c for computer..'
+    output_interface.send "h for human or c for computer.."
   end
 
   private
-
-  attr_reader :interface
 
   def acceptable_inputs
     return ["h", "c"]

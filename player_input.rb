@@ -16,7 +16,11 @@ class PlayerInput
   private
 
   def input_filter(choice, player)
-    board.play_on_box(choice, player) if board.available_boxes.include? choice
+    if board.available_boxes.include? choice
+      board.play_on_box(choice, player)
+      return true
+    end
+    return false
   end
 
   attr_reader :board
