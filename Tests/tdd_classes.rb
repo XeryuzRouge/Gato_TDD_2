@@ -19,11 +19,21 @@ end
 
 class FakeOutput
 
-  attr_reader :message
+  def initialize
+    @messages = []
+  end
 
   def puts(message)
-    @message = message
+    @messages << message
   end
+
+  def message
+    @messages.last
+  end
+
+  private
+
+  attr_reader :messages
 
 end
 
@@ -62,7 +72,7 @@ end
 
 class FakeBoard
 
-  attr_reader :boxes
+  attr_accessor :boxes
 
   def initialize
     @boxes = { "7" => :empty, "8" => :empty, "9" => :empty,
@@ -83,5 +93,7 @@ class FakeBoard
     empty_boxes =boxes.select { |k,v| v == :empty }
     empty_boxes.keys
   end
+
+  private
 
 end

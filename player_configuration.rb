@@ -11,10 +11,14 @@ class PlayerConfiguration
 
   def player_request(player = 1)
     system 'cls'
-    output_interface.send "player #{player}, human or computer? (h/c)"
-    option_selected = input_interface.receive
-    return option_selected if acceptable_inputs.include? option_selected
-    output_interface.send "h for human or c for computer.."
+    option_selected = ""
+    acceptable_inputs = ["h", "c"]
+    until acceptable_inputs.include? option_selected do
+      output_interface.send "player #{player}, human or computer? (h/c)"
+      option_selected = input_interface.receive
+      output_interface.send "h for human or c for computer.."
+    end
+    return option_selected
   end
 
   private
