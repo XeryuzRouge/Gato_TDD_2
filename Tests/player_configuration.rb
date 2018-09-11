@@ -28,7 +28,7 @@ RSpec.describe PlayerConfiguration do
     it "Should show error if character isn't valid" do
       input_interface.input_manager.this_one("w")
       player_configuration.player_request
-      expect(output_interface.message).to eq "h for human or c for computer.."
+      expect(output_interface.output_manager.messages[1]).to eq "h for human or c for computer.."
     end
 
 end
