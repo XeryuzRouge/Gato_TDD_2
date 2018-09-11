@@ -1,5 +1,5 @@
 
-class PlayerInput
+class HumanInput
 
   attr_reader :input_interface
   
