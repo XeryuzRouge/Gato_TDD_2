@@ -5,9 +5,9 @@ class TurnsLogic
   attr_reader :human_turn
   attr_reader :cpu_turn
 
-  def initialize(players_sign, players_configuration)
-    @player1 = { sign: players_sign[0], config: players_configuration[0] }
-    @player2 = { sign: players_sign[1], config: players_configuration[1] }
+  def initialize(players)
+    @player1 = players[:player1]
+    @player2 = players[:player2]
     @current_turn = 0
     @actual_player = @player1
     swap_players
