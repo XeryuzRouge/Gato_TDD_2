@@ -2,9 +2,11 @@
 class FakeInput
 
   attr_reader :one
+  attr_reader :i
 
   def initialize
-    @one = "h"  
+    @one = "h"
+    @i = 0
   end
 
   def this_one(one)
@@ -12,12 +14,16 @@ class FakeInput
   end
 
   def gets
-    one
+    @one = "h" if @i > 0
+    @i += 1
+    return @one
   end
 
 end
 
 class FakeOutput
+
+  attr_reader :messages
 
   def initialize
     @messages = []
@@ -30,10 +36,6 @@ class FakeOutput
   def message
     @messages.last
   end
-
-  private
-
-  attr_reader :messages
 
 end
 
@@ -52,6 +54,10 @@ class FakeOutputInterface
 
   def message
     output_manager.message
+  end
+
+  def clear_display
+    system "cls"
   end
 
 end
@@ -73,15 +79,21 @@ end
 class FakeBoard
 
   attr_accessor :boxes
+  attr_reader :winning_combos
+  attr_accessor :empty
 
   def initialize
     @boxes = { "7" => :empty, "8" => :empty, "9" => :empty,
                "4" => :empty, "5" => :empty, "6" => :empty,
                "1" => :empty, "2" => :empty, "3" => :empty }
+
+    @winning_combos = [[7, 4, 1], [7, 8, 9], [7, 5, 3], [8, 5, 2], [9, 6, 3],
+                      [4, 5, 6], [1, 2, 3], [1, 5, 9]]
   end
 
   def play_on_box(selected_box, current_player)
     boxes[selected_box] = current_player
+    check_for_winner(current_player)
   end
 
   def player_boxes(current_player)
@@ -89,11 +101,33 @@ class FakeBoard
     players_boxes.keys
   end
 
+  def opponent_boxes(current_player)
+    boxes.keys - available_boxes - player_boxes(current_player)
+  end
+
   def available_boxes
     empty_boxes =boxes.select { |k,v| v == :empty }
     empty_boxes.keys
   end
+  
+   def check_for_winner(player)
+    winner_checker = FakeWinnerChecker.new
+    winner_checker.analyze_board(player_boxes(player), player, @winning_combos)
+  end
 
-  private
+end
+
+class FakeWinnerChecker
+
+  def analyze_board(player_boxes, player, winning_combos)
+    result = []
+    winning_combos.each do |i|
+      player_boxes.each do |j|
+        i.map!{ |element| element == j.to_i ? player : element}
+      end
+      return player if i == [player, player, player]
+    end
+    return false
+  end
 
 end

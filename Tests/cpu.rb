@@ -1,22 +1,30 @@
 require_relative '..\cpu'
+
+require_relative '..\cpu'
 require_relative 'tdd_classes'
 
 RSpec.describe CPU do
 
-  let(:cpu) { CPU.new(board) }
+  let(:opponent_cpu) { CPU.new(board, opponent) }
+  let(:player_cpu) { CPU.new(board, player) }
   let(:board) { FakeBoard.new }
+  let(:player) { "O" }
+  let(:opponent) { "X" }
 
-  it "Should choose an available box" do
+  it 'Should never lose' do
+    turns = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-    player = "O"
+    turns.each do |i|
+      if (i%2) == 0
+        opponent_cpu.move(i)
+      else
+        player_cpu.move(i)
+      end
+    end
 
-    board.boxes = { "7" => "X", "8" => "O", "9" => "X",
-                    "4" => "X", "5" => :empty, "6" => "X",
-                    "1" => "O", "2" => "X", "3" => "O" }
-
-    cpu.move(player)
-    expect(board.boxes["5"]).to eq "O"
-
+    winner = board.check_for_winner(player) if board.check_for_winner(player) == player
+    winner = board.check_for_winner(opponent) if board.check_for_winner(player) == opponent
+    expect(winner).to eq nil
   end
 
 end
