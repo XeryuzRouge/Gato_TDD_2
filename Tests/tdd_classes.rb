@@ -38,6 +38,16 @@ class FakeHumanInput
 
 end
 
+class FakeConfigurationInput
+
+
+
+  def gets
+    return "c"
+  end
+
+end
+
 class FakeOutput
 
   attr_reader :messages
