@@ -1,4 +1,3 @@
-require_relative '..\cpu'
 
 require_relative '..\cpu'
 require_relative 'tdd_classes'
