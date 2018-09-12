@@ -1,3 +1,4 @@
+
 require_relative 'board'
 require_relative 'board_display'
 require_relative 'turns_logic'
@@ -10,7 +11,7 @@ class MatchManager
 		@board = Board.new
 		@turns = TurnsLogic.new(players_config)
 		@output = output_interface
-		@board_displayer = BoardDisplay.new(@output)
+		@board_displayer = BoardDisplay.new(@output, board.empty)
 		@human_input = HumanInput.new(input_interface, board)
 		@winner = false
 		display_board
@@ -30,8 +31,7 @@ class MatchManager
     until (turns.completed ) || (winner == true) do
 			next_move
 		end
-		return turns.current_player if winner == true
-		return "" if winner == false
+		@output.send "Tie" if winner == false
 	end
 
 	def next_move
@@ -55,7 +55,7 @@ class MatchManager
 
 	def display_board
 		board_displayer.clear_screen
-		board_displayer.request(board.boxes)
+		board_displayer.request(board.boxes, turns.current_turn)
 		@output.send "\n"
 	end
 
