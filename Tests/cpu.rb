@@ -1,3 +1,4 @@
+require_relative '..\cpu'
 
 require_relative '..\cpu'
 require_relative 'tdd_classes'
@@ -22,7 +23,7 @@ RSpec.describe CPU do
     end
 
     winner = board.check_for_winner(player) if board.check_for_winner(player) == player
-    winner = board.check_for_winner(opponent) if board.check_for_winner(player) == opponent
+    winner = board.check_for_winner(opponent) if board.check_for_winner(opponent) == opponent
     expect(winner).to eq nil
   end
 
