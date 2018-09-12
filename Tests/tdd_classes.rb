@@ -21,6 +21,23 @@ class FakeInput
 
 end
 
+class FakeHumanInput
+
+  attr_reader :choices
+  attr_reader :i
+
+  def initialize
+    @i = 0
+    @choices = [7, 4, 8, 5, 9, 6]
+  end
+
+  def gets
+    @i += 1
+    return @choices[@i].to_s
+  end
+
+end
+
 class FakeOutput
 
   attr_reader :messages
@@ -128,6 +145,14 @@ class FakeWinnerChecker
       return player if i == [player, player, player]
     end
     return false
+  end
+
+end
+
+class FakeplayersConfiguration
+
+  def initialize
+    
   end
 
 end
