@@ -10,6 +10,8 @@ class Board
 
   def initialize
     @empty = " "
+               
+
     @boxes = { "7" => empty, "8" => empty, "9" => empty,
                "4" => empty, "5" => empty, "6" => empty,
                "1" => empty, "2" => empty, "3" => empty }
@@ -34,7 +36,7 @@ class Board
   end
 
   def available_boxes
-    empty_boxes =boxes.select { |k,v| v == empty }
+    empty_boxes = boxes.select { |k,v| v == empty }
     empty_boxes.keys
   end
 
