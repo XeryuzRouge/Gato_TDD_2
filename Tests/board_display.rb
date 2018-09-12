@@ -39,7 +39,6 @@ RSpec.describe BoardDisplay do
 										 '   ║   ║   ' + "\n" + 
 										 '═══╬═══╬═══' + "\n" + 
 										 ' O ║   ║ X ' + "\n" 
-                     print turn
     board_displayer.request(example_boxes, turn)
 		expect(output.message).to eq expected_board
 	end
