@@ -1,9 +1,9 @@
 
-require_relative 'board'
-require_relative 'board_display'
+require_relative 'board/board'
+require_relative 'board/board_display'
 require_relative 'turns_logic'
 require_relative 'human_input'
-require_relative 'cpu'
+require_relative 'cpu/cpu'
 
 class MatchManager
 	
@@ -12,7 +12,7 @@ class MatchManager
 		@turns = TurnsLogic.new(players_config)
 		@output = output_interface
 		@board_displayer = BoardDisplay.new(@output, board.empty)
-		@human_input = HumanInput.new(input_interface, board)
+		@human_input = HumanInput.new(@output, input_interface, board)
 		@winner = false
 		display_board
 		start_match
@@ -36,7 +36,9 @@ class MatchManager
 
 	def next_move
 		turns.next
-		human_move_filter if turns.human_turn == true
+		if turns.human_turn == true
+			human_input.play(turns.current_player)
+		end
 		if turns.cpu_turn == true
 			cpu = CPU.new(board, turns.current_player)
 			cpu.move(turns.current_turn)
@@ -45,17 +47,9 @@ class MatchManager
     got_winner if board.check_for_winner(turns.current_player) == turns.current_player
 	end
 
-	def human_move_filter
-		move_accepted = false
-		until move_accepted == true do
-			move_accepted = human_input.play(turns.current_player)
-			@output.send "\ninvalid box\n" if move_accepted == false
-		end
-	end
-
 	def display_board
 		board_displayer.clear_screen
-		board_displayer.request(board.boxes, turns.current_turn)
+		board_displayer.request(board.boxes)
 		@output.send "\n"
 	end
 

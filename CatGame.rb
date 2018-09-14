@@ -1,8 +1,6 @@
 require_relative 'game'
-require_relative 'player_configuration'
-require_relative 'output_interface'
-require_relative 'input_interface'
+require_relative 'game_configuration/player_configuration'
 
 begin
-	Game.new(PlayerConfiguration.new(OutputInterface.new, InputInterface.new))
+	Game.new(PlayerConfiguration.new)
 end
