@@ -11,6 +11,7 @@ class MatchInterface
 		@output = output_interface
 		@board = Board.new(output)
 		@human_input = HumanInput.new(output, input_interface, board)
+		@cpu_input = CPUInput.new(board)
 		@winner = false
 		@human = players_config[:human]
 		@computer = players_config[:computer]
@@ -24,6 +25,7 @@ class MatchInterface
 	attr_reader :turn
 	attr_reader :winner
 	attr_reader :human_input
+	attr_reader :cpu_input
 	attr_reader :output
 	attr_reader :human
 	attr_reader :computer
@@ -38,7 +40,7 @@ class MatchInterface
 	def next_move
 		turn.next
 		human_input.play(turn.player) if turn.belongs_to == human
-		cpu_input = CPUInput.new(board, turn.player, turn.current) if turn.belongs_to == computer
+		cpu_input.move(turn.player, turn.current) if turn.belongs_to == computer
     @winner = board.check_for_winner(turn.player)
 	end
 

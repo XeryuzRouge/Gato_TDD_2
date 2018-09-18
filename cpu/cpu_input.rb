@@ -4,12 +4,12 @@ require_relative 'board_analyzer'
 
 class CPUInput
 
-  def initialize(board, player)
+  def initialize(board)
     @player = player
     @board = board
   end
 
-  def move(turn)
+  def move(player, turn)
     board_analyzer = BoardAnalyzer.new
     plays_counter = PlaysCounter.new
     box_selected = nil
