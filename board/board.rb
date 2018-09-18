@@ -8,9 +8,9 @@ class Board
   attr_reader :winning_combos
   attr_reader :empty
 
-  def initialize
-    @empty = " "             
-
+  def initialize(output_interface)
+    @empty = " " 
+    @displayer = BoardDisplay.new(output_interface, empty)            
     @boxes = { "7" => empty, "8" => empty, "9" => empty,
                "4" => empty, "5" => empty, "6" => empty,
                "1" => empty, "2" => empty, "3" => empty }
@@ -21,6 +21,7 @@ class Board
 
   def play_on_box(selected_box, current_player)
     boxes[selected_box] = current_player
+    display
     check_for_winner(current_player)
   end
 
@@ -36,6 +37,10 @@ class Board
   def available_boxes
     empty_boxes = boxes.select { |k,v| v == empty }
     empty_boxes.keys
+  end
+
+  def display
+    @displayer.request(boxes)
   end
 
   def check_for_winner(player)

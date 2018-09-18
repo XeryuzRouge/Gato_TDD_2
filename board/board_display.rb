@@ -2,9 +2,9 @@
 class BoardDisplay
 
 	def initialize(output_interface, empty)
-		@output_interface = output_interface
+		@output = output_interface
 		@empty = empty
-		@vs = '║'
+		@vertical_separator = '║'
 		@horizontal_separator = '═══╬═══╬═══'
 		@boxes_displayed = {"7" => "\u2077", "8" => "\u2078", "9" => "\u2079",
                				 "4" => "\u2074", "5" => "\u2075", "6" => "\u2076",
@@ -22,18 +22,16 @@ class BoardDisplay
 						boxes[(box - column).to_s] if boxes[(box - column).to_s] != @empty
 					column += 1
 				end
-				board +=  " #{boxes_displayed[(box - 2).to_s]} " + "#{vs}" + 
-				          " #{boxes_displayed[(box - 1).to_s]} " + "#{vs}" + 
+				board +=  " #{boxes_displayed[(box - 2).to_s]} " + "#{vertical_separator}" + 
+				          " #{boxes_displayed[(box - 1).to_s]} " + "#{vertical_separator}" + 
 				          " #{boxes_displayed[(box).to_s]} " + "\n"
 				 board += horizontal_separator + "\n" if row < 3
 				box = box - 3
 				row += 1
 			end
-		output_interface.send board
-	end
-
-	def clear_screen
-		output_interface.clear_display
+			@output.clear_display
+		@output.send "#{board} \n"
+		clean_boxes
 	end
 
 	def clean_boxes
@@ -42,7 +40,7 @@ class BoardDisplay
 
 	private
 
-	attr_reader :vs
+	attr_reader :vertical_separator
 	attr_reader :horizontal_separator
 	attr_reader :output_interface
 	attr_reader :boxes_displayed
