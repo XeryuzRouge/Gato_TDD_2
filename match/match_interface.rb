@@ -11,7 +11,8 @@ class MatchInterface
 		@output = output_interface
 		@board = Board.new(output)
 		@human_input = HumanInput.new(output, input_interface, board)
-		@cpu_input = CPUInput.new(board)
+		thinking_time = 1
+		@cpu_input = CPUInput.new(board, thinking_time)
 		@winner = false
 		@human = players_config[:human_player]
 		@computer = players_config[:computer_player]
