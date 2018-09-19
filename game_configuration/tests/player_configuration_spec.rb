@@ -4,7 +4,7 @@ require_relative '..\player_configuration'
 
 RSpec.describe PlayerConfiguration do   
 
-    let(:player_configuration) { PlayerConfiguration.new }
+    let(:player_configuration) { PlayerConfiguration.new(output_interface, input_interface) }
 
     let(:output_interface) { FakeOutputInterface.new }
     let(:input_interface) { FakeInputInterface.new }

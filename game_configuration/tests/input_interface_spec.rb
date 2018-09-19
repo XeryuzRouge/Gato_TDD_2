@@ -1,6 +1,6 @@
 
 require_relative '..\input_interface'
-require_relative 'tdd_classes'
+require_relative '..\..\tests\tdd_classes'
 
 RSpec.describe InputInterface do
 
