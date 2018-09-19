@@ -1,6 +1,6 @@
 
-require_relative '..\cpu_input'
-require_relative '..\..\tests\tdd_classes'
+require_relative 'cpu_input'
+require_relative '..\..\..\tests\tdd_classes'
 
 RSpec.describe CPUInput do
 
