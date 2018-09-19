@@ -45,9 +45,11 @@ class PlaysCounter
   end
 
   def counter_plays
-    [["7", "3", cross_boxes], ["1", "9", cross_boxes], 
-    ["8", "6", corner_boxes], ["6", "2", corner_boxes], ["2", "4", corner_boxes], ["4", "8", corner_boxes],
-    ["7", "5", corner_boxes], ["9", "5", corner_boxes], ["1", "5", corner_boxes], ["3", "5", corner_boxes]]
+    [["7", "3", cross_boxes], ["1", "9", cross_boxes],
+    ["7", "5", corner_boxes], ["9", "5", corner_boxes], ["1", "5", corner_boxes], ["3", "5", corner_boxes],
+    ["3", "4", ["1"]], ["1", "6", ["3"]], ["4", "9", ["7"]], ["6", "7", ["9"]],
+    ["1", "8", ["7"]], ["3", "8", ["9"]], ["2", "7", ["1"]], ["2", "9", ["3"]],
+    ["2", "4", ["1"]], ["2", "6", ["3"]], ["4", "8", ["7"]], ["6", "8", ["9"]]]
   end
 
 end

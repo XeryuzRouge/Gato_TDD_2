@@ -5,7 +5,7 @@ class FakeInput
   attr_reader :i
 
   def initialize
-    @one = "h"
+    @one = []
     @i = 0
   end
 
@@ -13,10 +13,14 @@ class FakeInput
     @one = one
   end
 
+  def try_these(these)
+    @i = 0
+    @one = these
+  end
+
   def gets
-    @one = "h" if @i > 0
     @i += 1
-    return @one
+    return @one[@i - 1]
   end
 
 end
@@ -39,8 +43,6 @@ class FakeHumanInput
 end
 
 class FakeConfigurationInput
-
-
 
   def gets
     return "c"
@@ -121,6 +123,7 @@ class FakeBoard
   def play_on_box(selected_box, current_player)
     boxes[selected_box] = current_player
     check_for_winner(current_player)
+    return current_player, selected_box
   end
 
   def player_boxes(current_player)
@@ -140,6 +143,14 @@ class FakeBoard
    def check_for_winner(player)
     winner_checker = FakeWinnerChecker.new
     winner_checker.analyze_board(player_boxes(player), player, @winning_combos)
+  end
+
+end
+
+class RandomInputs
+
+  def play(available_boxes)
+    available_boxes.sample
   end
 
 end

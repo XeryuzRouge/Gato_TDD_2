@@ -14,9 +14,9 @@ class HumanInput
 
   private
 
-  attr_reader :board
   attr_reader :input
   attr_reader :output
+  attr_reader :board
 
   def input_filter(choice, player)
     if board.available_boxes.include? choice
@@ -26,5 +26,5 @@ class HumanInput
       play(player)
     end
   end
-
+  
 end

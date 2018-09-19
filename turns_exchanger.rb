@@ -1,29 +1,28 @@
 
-class TurnsLogic
+class TurnsExchanger
 
-  attr_reader :current_turn
-  attr_reader :human_turn
-  attr_reader :cpu_turn
+  attr_reader :current
+  attr_reader :belongs_to
 
   def initialize(players)
     @player1 = players[:player1]
     @player2 = players[:player2]
-    @current_turn = 0
+    @current = 0
     @actual_player = @player1
     swap_players
   end
 
   def next
-    @current_turn += 1
+    @current += 1
     swap_players
   end
 
-  def completed
-    return true if @current_turn == 9
+  def player
+    @actual_player[:sign]
   end
 
-  def current_player
-    @actual_player[:sign]
+  def match_completed
+    return true if @current == 9
   end
 
   private
@@ -34,13 +33,7 @@ class TurnsLogic
     else
       @actual_player = @player1
     end
-    if @actual_player[:config] == "h"
-      @human_turn = true
-      @cpu_turn = false
-    elsif @actual_player[:config] == "c"
-      @human_turn = false
-      @cpu_turn = true
-    end
+      @belongs_to = @actual_player[:config]
   end
 
   attr_reader :player1

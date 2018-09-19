@@ -2,14 +2,14 @@
 require_relative 'plays_counter'
 require_relative 'board_analyzer'
 
-class CPU
+class CPUInput
 
-  def initialize(board, player)
+  def initialize(board)
     @player = player
     @board = board
   end
 
-  def move(turn)
+  def move(player, turn)
     board_analyzer = BoardAnalyzer.new
     plays_counter = PlaysCounter.new
     box_selected = nil
@@ -17,7 +17,6 @@ class CPU
     box_selected = board_analyzer.analyze(board, player)
     box_selected = plays_counter.special_moves(board, player, turn) if box_selected == nil && turn <= 4
     box_selected = board.available_boxes.sample if box_selected == nil
-    sleep(0.3)
     board.play_on_box(box_selected.to_s, player)
   end
 
