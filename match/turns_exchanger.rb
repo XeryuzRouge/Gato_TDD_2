@@ -33,7 +33,7 @@ class TurnsExchanger
     else
       @actual_player = @player1
     end
-      @belongs_to = @actual_player[:config]
+      @belongs_to = @actual_player[:player_type]
   end
 
   attr_reader :player1

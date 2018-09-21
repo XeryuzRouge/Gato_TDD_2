@@ -1,39 +1,35 @@
-
-require_relative 'output_interface'
-require_relative 'input_interface'
+require_relative 'game_configuration'
 
 class PlayerConfiguration
 
   attr_reader :output_interface
   attr_reader :input_interface
-  attr_reader :acceptable_characters
-  attr_reader :game_characters
+  attr_reader :game_config
 
-  def initialize
-    @output_interface = OutputInterface.new
-    @input_interface = InputInterface.new
-    @acceptable_characters = { human: ["h", "H"], computer: ["c", "C"]}
-    @game_characters = { X: "X", O: "O"}
+  def initialize(output_interface, input_interface)
+    @output_interface = output_interface
+    @input_interface = input_interface
+    @game_config = GameConfiguration.new
   end
 
   def player_request(player = 1)
-    output_interface.clear_display
-    option_selected = ""
-    output_interface.send "player #{player}, human or computer? (h/c)"
-    loop do
-    option_selected = input_interface.receive
-    @acceptable_characters.each do |i|
-      choice = i[0]
-      i[1].each do |j|
-        return choice  if j == option_selected
-      end
-    end
-    output_interface.send "h for human or c for computer.."
-    end
-  end
+    option_selected = " "
+    sign = game_config.game_characters(player)
 
-  def players_characters
-    return acceptable_characters.keys
+    output_interface.clear_display
+    output_interface.send "player #{player}, human or computer? (h/c)"
+
+    loop do
+      option_selected = input_interface.receive
+      game_config.players_characters.each do |i|
+        choice = i[0]
+        i[1].each do |j|
+          return { player_type: choice, sign: sign} if j == option_selected
+        end
+      end
+      output_interface.send "h for human or c for computer.."
+    end
+
   end
 
 end

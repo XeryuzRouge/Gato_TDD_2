@@ -4,7 +4,7 @@ require_relative 'turns_exchanger'
 require_relative 'human_input'
 require_relative '../cpu/cpu_input'
 
-class MatchInterface
+class Match
 	
 	def initialize(output_interface, input_interface, players_config)
 		@turn = TurnsExchanger.new(players_config)
@@ -14,8 +14,8 @@ class MatchInterface
 		thinking_time = 1
 		@cpu_input = CPUInput.new(board, thinking_time)
 		@winner = false
-		@human = players_config[:human_player]
-		@computer = players_config[:computer_player]
+		@human = :human
+		@computer = :computer
 		board.display
 		start
 	end

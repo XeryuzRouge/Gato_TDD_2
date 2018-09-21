@@ -9,26 +9,22 @@ RSpec.describe PlayerConfiguration do
     let(:output_interface) { FakeOutputInterface.new }
     let(:input_interface) { FakeInputInterface.new }
 
-    it "Should ask for player 1" do
-      player_configuration.player_request(1)
-      player = 1
-      expect(output_interface.message).to eq "player #{player}, human or computer? (h/c)"
-    end
-
-    it "Should recive player as human" do
+    it "Should receive player 1 as human" do
       input_interface.input_manager.this_one("h")
-      expect(player_configuration.player_request).to eq "h"
+      expected_hash = {:player_type=>:human, :sign=>"X"}
+      expect(player_configuration.player_request(1)).to eq expected_hash
     end
 
-    it "Should receive player as computer" do
-      input_interface.input_manager.this_one("c")
-      expect(player_configuration.player_request).to eq "c"
+    it "Should receive player 2 as computer" do
+      input_interface.input_manager.this_one("C")
+      expect(player_configuration.player_request(2)).to eq expected_hash = {:player_type=>:computer, :sign=>"O"}
     end
 
-    it "Should show error if character isn't valid" do
-      input_interface.input_manager.this_one("w")
+    it "should loop message error until it gets a valid character" do
+      input_interface.input_manager.try_these(["w", "1", "H"])
       player_configuration.player_request
       expect(output_interface.output_manager.messages[1]).to eq "h for human or c for computer.."
+      expect(output_interface.output_manager.messages[2]).to eq "h for human or c for computer.."
     end
 
 end

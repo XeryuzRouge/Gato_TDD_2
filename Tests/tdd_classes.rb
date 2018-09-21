@@ -81,7 +81,7 @@ class FakeOutputInterface
     output_manager.puts this
   end
 
-  def message
+  def last_message
     output_manager.message
   end
 
@@ -101,6 +101,10 @@ class FakeInputInterface
 
   def receive
     input_manager.gets.chomp
+  end
+
+  def try_these(these)
+    input_manager.try_these(these)
   end
 
 end
