@@ -1,6 +1,6 @@
 
-require_relative '..\winner_checker'
-require_relative 'tdd_classes'
+require_relative '../winner_checker'
+require_relative '../../tests/tdd_classes'
 
 RSpec.describe WinnerChecker do
 
