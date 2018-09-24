@@ -1,14 +1,17 @@
 
 require_relative '..\board_display'
-require_relative 'tdd_classes'
+require_relative '..\..\tests\tdd_classes'
 
 RSpec.describe BoardDisplay do
-	let(:board_displayer) { BoardDisplay.new(fake_interface, empty) }
-	let(:fake_interface) { FakeOutputInterface.new(output) }
+	let(:board_displayer) { BoardDisplay.new(empty) }
 	let(:output) { FakeOutput.new }
   let(:empty) { " " }
 
-	it 'Should return intuitive board at the first 2 turns of the match' do
+  before(:each) do
+    board_displayer.init_output(output)
+  end
+
+	it 'Should return intuitive board at the first turn of the match' do
 
 		example_boxes = { "7" => empty, "8" => empty, "9" => empty,
                       "4" => empty, "5" => empty, "6" => empty,
@@ -18,7 +21,7 @@ RSpec.describe BoardDisplay do
 										 '═══╬═══╬═══' + "\n" + 
 										 ' ⁴ ║ ⁵ ║ ⁶ ' + "\n" + 
 										 '═══╬═══╬═══' + "\n" + 
-										 ' ¹ ║ ² ║ ³ ' + "\n"
+										 ' ¹ ║ ² ║ ³ ' + "\n " + "\n"
 
     board_displayer.request(example_boxes)
 
@@ -38,7 +41,7 @@ RSpec.describe BoardDisplay do
                      '═══╬═══╬═══' + "\n" + 
                      '   ║   ║   ' + "\n" + 
                      '═══╬═══╬═══' + "\n" + 
-                     '   ║   ║   ' + "\n"
+                     '   ║   ║   ' + "\n " + "\n"
 
     board_displayer.request(example_boxes)
 
@@ -58,7 +61,7 @@ RSpec.describe BoardDisplay do
 										 '═══╬═══╬═══' + "\n" + 
 										 '   ║   ║   ' + "\n" + 
 										 '═══╬═══╬═══' + "\n" + 
-										 ' O ║   ║ X ' + "\n" 
+										 ' O ║   ║ X ' + "\n " + "\n" 
     board_displayer.request(example_boxes)
 		expect(output.message).to eq expected_board
 	end

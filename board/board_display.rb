@@ -1,8 +1,11 @@
+require_relative '../game_configuration/output_module'
 
 class BoardDisplay
 
-	def initialize(output_interface, empty)
-		@output = output_interface
+	include OutputModule
+
+	def initialize(empty)
+		init_output
 		@empty = empty
 		@vertical_separator = '║'
 		@horizontal_separator = '═══╬═══╬═══'
@@ -29,8 +32,8 @@ class BoardDisplay
 				box = box - 3
 				row += 1
 			end
-			@output.clear_display
-		@output.send "#{board} \n"
+			clear_display
+		show "#{board} \n"
 		clean_boxes
 	end
 
