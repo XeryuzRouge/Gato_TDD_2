@@ -39,7 +39,7 @@ RSpec.describe CPUInput do
 
       winner = "Tie" if winner == " "
 
-      expect(winner).to eq("O") | eq("Tie")
+      expect(winner).to match(/O|Tie/)
     end
 
   end

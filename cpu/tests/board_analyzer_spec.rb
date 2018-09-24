@@ -1,6 +1,6 @@
 
 require_relative '..\board_analyzer'
-require_relative 'tdd_classes'
+require_relative '..\..\tests\tdd_classes'
 
 RSpec.describe BoardAnalyzer do
 
