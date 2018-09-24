@@ -1,6 +1,6 @@
 
 require_relative '..\plays_counter'
-require_relative 'tdd_classes'
+require_relative '..\..\tests\tdd_classes'
 
 RSpec.describe PlaysCounter do
 
