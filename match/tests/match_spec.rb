@@ -1,0 +1,45 @@
+
+require_relative '..\match'
+require_relative '..\..\tests\tdd_classes'
+
+RSpec.describe Match do
+
+  let(:new_match) { Match.new(players_config) }
+  let(:output) { FakeOutput.new }
+  let(:boxes_plays) { FakeInput.new }
+  let(:p1) { {:player_type=>:human, :sign=>"X"} }
+  let(:p2) { {:player_type=>:computer, :sign=>"O"} }
+  let(:players_config) { {player1: p1, player2: p2} }
+
+  before(:each) do
+    new_match.init_output(output)
+    new_match.human_input.init_input(boxes_plays)
+  end
+
+  it 'should manage a human vs human match' do
+
+    p2[:player_type] = :human 
+
+    boxes_plays.try_these(["7", "8", "4", "5", "1"])
+
+    new_match.start
+    expect(output.message).to eq "The winner is: X"
+  end
+
+  it "should manage a human vs cpu match & should recognize players sign modification" do
+
+    boxes_plays.try_these(["1", "2", "6"])
+
+    new_match.start
+    expect(output.message).to eq "The winner is: O"
+  end
+
+  it 'should manage a cpu vs cpu match' do
+
+     p1[:player_type] = :computer 
+
+    new_match.start
+    expect(output.message).to eq "Tie"
+  end
+
+end
