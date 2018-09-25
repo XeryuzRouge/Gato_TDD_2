@@ -1,5 +1,5 @@
 
-require_relative '..\turns_exchanger'
+require_relative '../turns_exchanger'
 
 RSpec.describe TurnsExchanger do
 

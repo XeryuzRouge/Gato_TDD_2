@@ -1,13 +1,13 @@
 
-require_relative '..\board'
-require_relative '..\..\tests\tdd_classes'
+require_relative '../board'
+require_relative '../../tests/tdd_classes'
 
 RSpec.describe Board do
 
   let(:board) { Board.new }
   let(:empty) { " " }
 
-  it 'Should return board status as default' do
+  it 'should return board status as default' do
     default_status = { "7" => empty, "8" => empty, "9" => empty,
                        "4" => empty, "5" => empty, "6" => empty,
                        "1" => empty, "2" => empty, "3" => empty }
@@ -15,7 +15,7 @@ RSpec.describe Board do
     expect(board.boxes).to eq default_status
   end
 
-  it "Should let modify any board's box's content" do
+  it "should let modify any board's box's content" do
 
     box_selected = "5"
     turn_of = "X"
@@ -25,7 +25,7 @@ RSpec.describe Board do
 
   end
 
-  it "Should return all boxes with a player's value" do
+  it "should return all boxes with a player's value" do
 
     player_x = "X"
     player_o = "O"
@@ -37,7 +37,7 @@ RSpec.describe Board do
 
   end
 
-  it "Should return all boxes with a opponent's value" do
+  it "should return all boxes with a opponent's value" do
 
     player_x = "X"
     player_o = "O"
@@ -49,7 +49,7 @@ RSpec.describe Board do
 
   end
 
-  it "Should return boxes available" do
+  it "should return boxes available" do
 
     player_x = "X"
     player_o = "O"
@@ -61,7 +61,7 @@ RSpec.describe Board do
 
   end
 
-   it "Should return winning combos updated" do
+   it "should return winning combos updated" do
 
     expected_combo =  [["X", "O", 1], ["X", 8, 9], ["X", 5, 3], 
                       [8, 5, 2], [9, "X", 3], ["O", 5, "X"], 

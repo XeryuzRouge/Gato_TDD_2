@@ -1,6 +1,6 @@
 
-require_relative '..\board_display'
-require_relative '..\..\tests\tdd_classes'
+require_relative '../board_display'
+require_relative '../../tests/tdd_classes'
 
 RSpec.describe BoardDisplay do
 	let(:board_displayer) { BoardDisplay.new(empty) }

@@ -1,6 +1,6 @@
 
-require_relative '..\match'
-require_relative '..\..\tests\tdd_classes'
+require_relative '../match'
+require_relative '../../tests/tdd_classes'
 
 RSpec.describe Match do
 

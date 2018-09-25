@@ -1,10 +1,11 @@
 
-require_relative '..\human_input'
+require_relative '../human_input'
+require_relative '../board/board'
 require_relative 'tdd_classes'
 
 RSpec.describe HumanInput do
 
-  let(:board) { FakeBoard.new }
+  let(:board) { Board.new }
   let(:output) { FakeOutput.new }
   let(:input) { FakeInput.new }
 	let(:human_input) { HumanInput.new(board) }

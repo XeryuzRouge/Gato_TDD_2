@@ -1,5 +1,5 @@
-require_relative '..\..\tests\tdd_classes'
-require_relative '..\game_configuration'
+
+require_relative '../game_configuration'
 
 RSpec.describe GameConfiguration do
 
