@@ -1,11 +1,11 @@
 
-require_relative '..\board_analyzer'
-require_relative '..\..\tests\tdd_classes'
+require_relative '../board_analyzer'
+require_relative '../../board/board'
 
 RSpec.describe BoardAnalyzer do
 
   let(:board_analyzer) { BoardAnalyzer.new }
-  let(:board) { FakeBoard.new }
+  let(:board) { Board.new }
   let(:player) { "O" }
   let(:opponent) { "X" }
 

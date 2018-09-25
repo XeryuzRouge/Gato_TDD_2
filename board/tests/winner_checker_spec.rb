@@ -1,11 +1,11 @@
 
 require_relative '../winner_checker'
-require_relative '../../tests/tdd_classes'
+require_relative '../board'
 
 RSpec.describe WinnerChecker do
 
-  let(:winner_checker) {WinnerChecker.new}
-  let(:board) {FakeBoard.new}
+  let(:winner_checker) { WinnerChecker.new }
+  let(:board) { Board.new }
 
   it "Should recognize if a player has won the match" do
 

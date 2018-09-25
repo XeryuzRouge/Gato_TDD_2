@@ -1,15 +1,15 @@
 
-require_relative '..\cpu_input'
-require_relative '..\..\tests\tdd_classes'
+require_relative '../cpu_input'
+require_relative '../../board/board'
 
 RSpec.describe CPUInput do
 
-  matches = Array.new(5000)
+  matches = Array.new(1)
 
   matches.each do
 
     it 'should never lose' do
-      board = FakeBoard.new
+      board = Board.new
       player1 = "X" 
       player2 = "O"
       winner = " "
