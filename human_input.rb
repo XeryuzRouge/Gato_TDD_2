@@ -1,15 +1,16 @@
 
 require_relative 'game_configuration/output_module'
 require_relative 'game_configuration/input_module'
+require_relative 'game_configuration/text_input'
 
 class HumanInput
 
   include OutputModule
   include InputModule
   
-  def initialize(board)
+  def initialize(board, input_manager)
     init_output
-    init_input
+    init_input(input_manager)
     @board = board
   end
 

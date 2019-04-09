@@ -2,6 +2,7 @@
 require_relative 'game_configuration'
 require_relative 'output_module'
 require_relative 'input_module'
+require_relative 'text_input'
 
 class PlayerConfiguration
 
@@ -10,8 +11,9 @@ class PlayerConfiguration
 
   attr_reader :game_config
 
-  def initialize
-    init_input
+  def initialize(input_manager)
+    @input_manager = input_manager
+    init_input(input_manager) 
     init_output
     @game_config = GameConfiguration.new
   end
@@ -33,7 +35,10 @@ class PlayerConfiguration
       end
       show "h for human or c for computer.."
     end
+  end
 
+  def input_manager
+    @input_manager
   end
 
 end

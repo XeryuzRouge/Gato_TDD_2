@@ -8,7 +8,7 @@ RSpec.describe HumanInput do
   let(:board) { Board.new }
   let(:output) { FakeOutput.new }
   let(:input) { FakeInput.new }
-	let(:human_input) { HumanInput.new(board) }
+	let(:human_input) { HumanInput.new(board, FakeInput) }
 
   before(:each) do
     human_input.init_output(output)

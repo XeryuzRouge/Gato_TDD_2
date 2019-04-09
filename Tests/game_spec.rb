@@ -5,7 +5,7 @@ require_relative 'tdd_classes'
 
 RSpec.describe Game do
 
-  let(:player_config) { PlayerConfiguration.new }
+  let(:player_config) { PlayerConfiguration.new(FakeInput) }
   let(:input) { FakeInput.new }
 
   before(:each) do
