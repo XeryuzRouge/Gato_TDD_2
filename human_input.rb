@@ -1,15 +1,13 @@
 
-require_relative 'game_configuration/output_module'
 require_relative 'game_configuration/input_module'
 require_relative 'game_configuration/text_input'
 
 class HumanInput
 
-  include OutputModule
   include InputModule
   
-  def initialize(board, input_manager)
-    init_output
+  def initialize(board, input_manager, output)
+    @output = output
     init_input(input_manager)
     @board = board
   end
@@ -27,7 +25,7 @@ class HumanInput
     if board.available_boxes.include? choice
       board.play_on_box(choice, player)
     else
-      show "\ninvalid box\n"
+      @output.show "\ninvalid box\n"
       play(player)
     end
   end

@@ -1,11 +1,8 @@
-require_relative '../game_configuration/output_module'
 
 class BoardDisplay
 
-	include OutputModule
-
-	def initialize(empty)
-		init_output
+	def initialize(output, empty)
+		@output = output
 		@empty = empty
 		@vertical_separator = '║'
 		@horizontal_separator = '═══╬═══╬═══'
@@ -14,7 +11,21 @@ class BoardDisplay
                				 "1" => "\u00B9", "2" => "\u00B2", "3" => "\u00B3" }
 	end
 
-	def request(boxes)
+	def show(boxes)
+		if output = STDOUT
+			terminal_display(boxes)
+		else
+			foreign_display(boxes)
+		end
+	end
+
+	def clean_boxes
+		@boxes_displayed.each { |k,v| @boxes_displayed[k] = @empty }
+	end
+
+	private
+
+	def terminal_display(boxes)
 		box = 9
 		row = 1
 		board = ''
@@ -32,16 +43,13 @@ class BoardDisplay
 				box = box - 3
 				row += 1
 			end
-			clear_display
-		show "#{board} \n"
+		@output.show "#{board} \n"
 		clean_boxes
 	end
 
-	def clean_boxes
-		@boxes_displayed.each { |k,v| @boxes_displayed[k] = @empty }
+	def foreign_display(boxes)
+		@output.show boxes
 	end
-
-	private
 
 	attr_reader :vertical_separator
 	attr_reader :horizontal_separator

@@ -22,4 +22,11 @@ RSpec.describe OutputModule do
     expect(fake_output.message).to eq ("anything")
   end
 
+  it "should write anything" do
+    fake_output = FakeOutput.new
+    dummy_class.init_output(fake_output)
+    dummy_class.output_anything
+    expect(fake_output.message).to eq ("anything")
+  end
+
 end

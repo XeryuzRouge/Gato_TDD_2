@@ -7,6 +7,7 @@ class Game
 
   def initialize(player_config)
     @input_manager = player_config.input_manager
+    @output_manager = player_config.output
     p1 = player_config.player_request(1)
     p2 = player_config.player_request(2)
 
@@ -16,8 +17,9 @@ class Game
   end
 
   def new_match
-  	 new_match = Match.new(players_config, @input_manager)
-     @result = new_match.start
+  	new_match = Match.new(players_config,
+    @input_manager, @output_manager)
+    @result = new_match.start
   end
 
 end
