@@ -32,8 +32,4 @@ module OutputModule
     @output_manager.winner(player)
   end
 
-  def clear
-    @output_manager.clear
-  end
-
 end

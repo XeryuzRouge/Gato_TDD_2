@@ -19,8 +19,6 @@ class PlayerConfiguration
   def player_request(player = 1)
     option_selected = " "
     sign = game_config.game_characters(player)
-
-    clear
     show_configuration_options(player)
 
     loop do

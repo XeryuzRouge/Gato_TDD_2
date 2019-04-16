@@ -7,11 +7,6 @@ RSpec.describe TerminalOutput do
   let(:fake_stdout) { FakeSTDOUT.new }
   let(:terminal) { TerminalOutput.new(fake_stdout) }
 
-  it 'Should display invalid box' do
-    terminal.invalid
-    expect(fake_stdout.message).to eq "\ninvalid box\n"
-  end
-
   it 'Should display configuration options' do
     terminal.configuration_options(1)
     expect(fake_stdout.message).to eq "player 1, human or computer? (h/c)"
@@ -22,6 +17,11 @@ RSpec.describe TerminalOutput do
   it 'Should display configuration options error' do
     terminal.configuration_options_error
     expect(fake_stdout.message).to eq "h for human or c for computer.."
+  end
+
+  it 'Should display invalid box' do
+    terminal.invalid
+    expect(fake_stdout.message).to eq "\ninvalid box\n"
   end
 
   it 'Should display tie' do

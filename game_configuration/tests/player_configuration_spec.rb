@@ -28,8 +28,8 @@ RSpec.describe PlayerConfiguration do
   it "should loop message error until it gets a valid character" do
     input.try_these(["w", "1", "H"])
     player_configuration.player_request
+    expect(output.messages[1]).to eq "configuration options error message"
     expect(output.messages[2]).to eq "configuration options error message"
-    expect(output.messages[3]).to eq "configuration options error message"
   end
 
 end
