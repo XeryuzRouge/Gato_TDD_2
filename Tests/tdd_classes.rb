@@ -18,7 +18,7 @@ class FakeInput
     @one = these
   end
 
-  def get
+  def message
     @i += 1
     return @one[@i - 1]
   end

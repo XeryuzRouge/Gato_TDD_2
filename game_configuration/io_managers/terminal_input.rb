@@ -5,7 +5,7 @@ class TerminalInput
 		@terminal = terminal
 	end
 
-	def get
+	def message
 		 @terminal.gets.chomp
 	end
 

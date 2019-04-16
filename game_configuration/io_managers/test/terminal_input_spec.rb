@@ -8,7 +8,7 @@ RSpec.describe TerminalInput do
 
 	it 'Should receive anything as STDIN input' do
 		fake_stdin.set("input")
-		expect(terminal.get).to eq "input"
+		expect(terminal.message).to eq "input"
 	end
 
 end

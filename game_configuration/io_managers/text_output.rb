@@ -28,15 +28,15 @@ class TextOutput
 	private
 
 	def write(message)
-		text_file = File.open(@file_path, 'w')
-		clear_content(text_file)
+		@text_file = File.open(@file_path, 'w')
+		clear_content
 
-    text_file.write(message)
-    text_file.close
+    @text_file.write(message)
+    @text_file.close
 	end
 
-	def clear_content(text_file)
-		text_file.truncate(0)
+	def clear_content
+		@text_file.truncate(0)
 	end
 
 end

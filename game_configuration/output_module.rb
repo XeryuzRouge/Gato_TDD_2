@@ -1,4 +1,4 @@
-require_relative 'terminal_output'
+require_relative 'io_managers/terminal_output'
 
 module OutputModule
 

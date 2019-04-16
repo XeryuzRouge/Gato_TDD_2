@@ -1,3 +1,4 @@
+require_relative 'io_managers/terminal_input'
 
 module InputModule
 
@@ -8,7 +9,7 @@ module InputModule
   end
 
   def receive
-    @input_manager.get
+    @input_manager.message
   end
 
 end
