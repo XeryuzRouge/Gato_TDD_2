@@ -18,7 +18,7 @@ class FakeInput
     @one = these
   end
 
-  def gets
+  def get
     @i += 1
     return @one[@i - 1]
   end
@@ -80,6 +80,22 @@ class FakeSTDOUT
   end
 
   def message
+    @messages.last
+  end
+
+end
+
+class FakeSTDIN
+
+  def initialize
+    @messages = []
+  end
+
+  def set(message)
+     @messages << message
+  end
+
+  def gets
     @messages.last
   end
 

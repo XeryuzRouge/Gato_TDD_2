@@ -1,0 +1,14 @@
+require_relative '../terminal_input'
+require_relative '../../tests/tdd_classes'
+
+RSpec.describe TerminalInput do
+
+	let(:fake_stdin) { FakeSTDIN.new }
+	let(:terminal) { TerminalInput.new(fake_stdin) }
+
+	it 'Should receive anything as STDIN input' do
+		fake_stdin.set("input")
+		expect(terminal.get).to eq "input"
+	end
+
+end
