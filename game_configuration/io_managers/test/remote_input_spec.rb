@@ -1,14 +1,14 @@
-require_relative '../text_input'
+require_relative '../remote_input'
 require_relative '../../tests/tdd_classes'
 
-RSpec.describe TextInput do
+RSpec.describe RemoteInput do
 
 	let(:input_file) { "input.txt" }
-  let(:text_input) { TextInput.new(input_file) }
+  let(:remote_input) { RemoteInput.new(input_file) }
 
 	it 'Should get text file content' do
     write_input_file("input")
-    expect(text_input.message).to eq "input"
+    expect(remote_input.message).to eq "input"
   end
 
   private

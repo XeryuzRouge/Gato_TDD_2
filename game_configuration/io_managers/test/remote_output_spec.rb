@@ -1,52 +1,57 @@
-require_relative '../text_output'
+require_relative '../remote_output'
 require_relative '../../tests/tdd_classes'
 
-RSpec.describe TextOutput do
+RSpec.describe RemoteOutput do
   let(:empty) { " " }
   let(:output_file) { "output.txt" }
-  let(:text_output) { TextOutput.new(output_file) }
+  let(:remote_output) { RemoteOutput.new(output_file) }
 
   it 'Should write configuration options' do
-    text_output.configuration_options(1)
+    remote_output.configuration_options(1)
     expect(output_file_content).to eq "configuration_options player 1"
   end
 
   it 'Should delete file content before rewriting it' do
-  	text_output.configuration_options(2)
+  	remote_output.configuration_options(2)
   	expect(output_file_content).to eq "configuration_options player 2"
 
-  	text_output.configuration_options("unknown")
+  	remote_output.configuration_options("unknown")
   	expect(output_file_content).to eq "configuration_options player unknown"
   end
 
   it 'Should write configuration options error' do
-    text_output.configuration_options_error
+    remote_output.configuration_options_error
     expect(output_file_content).to eq "configuration_options_error"
   end
 
   it 'Should write board status' do
-  	text_output.board(empty_boxes)
+  	remote_output.board(empty_boxes)
   	expect(output_file_content).to eq "" +
 		 '[["7", " "], ["8", " "], ["9", " "], ' +
   		'["4", " "], ["5", " "], ["6", " "], ' +
   		'["1", " "], ["2", " "], ["3", " "]]'
 
-  	text_output.board(played_boxes)
+  	remote_output.board(played_boxes)
   	expect(output_file_content).to eq "" +
 			'[["7", "X"], ["8", " "], ["9", " "], ' +
   		 '["4", " "], ["5", "X"], ["6", " "], ' +
   		 '["1", "O"], ["2", " "], ["3", "O"]]'
   end
 
+  it 'Should write invalid box message' do
+    remote_output.invalid
+    expect(output_file_content).to eq "invalid"
+  end
+
   it 'Should write winner' do
-    text_output.winner("X")
+    remote_output.winner("X")
     expect(output_file_content).to eq "winner X"
-    text_output.winner("someone else")
+    remote_output.winner("someone else")
     expect(output_file_content).to eq "winner someone else"
   end
 
   it 'Should write tie' do
-    text_output.tie
+    remote_output.tie
     expect(output_file_content).to eq "tie"
   end
 

@@ -4,9 +4,9 @@ require_relative '../player_configuration'
 
 RSpec.describe PlayerConfiguration do   
 
-  let(:player_configuration) { PlayerConfiguration.new }
   let(:output) { FakeOutput.new }
   let(:input) { FakeInput.new }
+  let(:player_configuration) { PlayerConfiguration.new(input, output) }
 
   before(:each) do
     player_configuration.init_output(output)

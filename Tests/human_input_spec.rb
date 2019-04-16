@@ -6,9 +6,9 @@ require_relative 'tdd_classes'
 RSpec.describe HumanInput do
 
   let(:board) { Board.new }
-  let(:output) { FakeOutput.new }
   let(:input) { FakeInput.new }
-	let(:human_input) { HumanInput.new(board) }
+  let(:output) { FakeOutput.new }
+	let(:human_input) { HumanInput.new(board, input, output) }
 
   before(:each) do
     human_input.init_output(output)

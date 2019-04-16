@@ -6,6 +6,9 @@ class Game
   attr_reader :result
 
   def initialize(player_config)
+    @input = player_config.input
+    @output = player_config.output
+
     p1 = player_config.player_request(1)
     p2 = player_config.player_request(2)
 
@@ -15,7 +18,7 @@ class Game
   end
 
   def new_match
-  	 new_match = Match.new(players_config)
+  	 new_match = Match.new(players_config, @input, @output)
      @result = new_match.start
   end
 

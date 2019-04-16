@@ -11,11 +11,11 @@ class Match
 
 	include OutputModule
 	
-	def initialize(players_config)
-		init_output
+	def initialize(players_config, input, output)
+		init_output(output)
 		@turn = TurnsExchanger.new(players_config)
 		@board = Board.new
-		@human_input = HumanInput.new(@board)
+		@human_input = HumanInput.new(@board, input, output)
 		thinking_time = 0
 		@cpu_input = CPUInput.new(@board, thinking_time)
 	end

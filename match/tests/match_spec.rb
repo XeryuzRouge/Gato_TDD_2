@@ -4,9 +4,9 @@ require_relative '../../tests/tdd_classes'
 
 RSpec.describe Match do
 
-  let(:match) { Match.new(players_config) }
-  let(:output) { FakeOutput.new }
   let(:boxes_plays) { FakeInput.new }
+  let(:output) { FakeOutput.new }
+  let(:match) { Match.new(players_config, boxes_plays, output) }
   let(:p1) { {:player_type=>:human, :sign=>"X"} }
   let(:p2) { {:player_type=>:computer, :sign=>"O"} }
   let(:players_config) { {player1: p1, player2: p2} }

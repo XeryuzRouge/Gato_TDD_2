@@ -9,10 +9,15 @@ class PlayerConfiguration
   include OutputModule
 
   attr_reader :game_config
+  attr_reader :input
+  attr_reader :output
 
-  def initialize
-    init_input
-    init_output
+  def initialize(input, output)
+    @input = input
+    @output = output
+    
+    init_input(input)
+    init_output(output)
     @game_config = GameConfiguration.new
   end
 

@@ -1,5 +1,5 @@
 
-class TextOutput
+class RemoteOutput
 
 	def initialize(file_path = 'output.txt')
 		@file_path = file_path
@@ -15,6 +15,10 @@ class TextOutput
 
 	def board(boxes)
 		 write(boxes.to_a)
+	end
+
+	def invalid
+		write("invalid")
 	end
 
 	def winner(player)

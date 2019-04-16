@@ -7,9 +7,9 @@ class HumanInput
   include OutputModule
   include InputModule
   
-  def initialize(board)
-    init_output
-    init_input
+  def initialize(board, input, output)
+    init_input(input)
+    init_output(output)
     @board = board
   end
 
