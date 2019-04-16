@@ -1,12 +1,9 @@
-require_relative '../game_configuration/output_module'
 
-class BoardDisplay
+class TerminalOutput
 
-	include OutputModule
-
-	def initialize(empty)
-		init_output
-		@empty = empty
+	def initialize(terminal = STDOUT)
+		@terminal = terminal
+		@empty = " "
 		@vertical_separator = '║'
 		@horizontal_separator = '═══╬═══╬═══'
 		@boxes_displayed = {"7" => "\u2077", "8" => "\u2078", "9" => "\u2079",
@@ -14,7 +11,7 @@ class BoardDisplay
                				 "1" => "\u00B9", "2" => "\u00B2", "3" => "\u00B3" }
 	end
 
-	def request(boxes)
+	def board(boxes)
 		box = 9
 		row = 1
 		board = ''
@@ -32,20 +29,44 @@ class BoardDisplay
 				box = box - 3
 				row += 1
 			end
-			clear_display
-		show "#{board} \n"
-		clean_boxes
+		system "clear"
+		@terminal.puts "#{board} \n"
+		clear_boxes
 	end
 
-	def clean_boxes
+	def clear_boxes
 		@boxes_displayed.each { |k,v| @boxes_displayed[k] = @empty }
 	end
+
+	def invalid
+		@terminal.puts "\ninvalid box\n"
+	end
+
+	def configuration_options(player)
+		@terminal.puts "player #{player}, human or computer? (h/c)"
+	end
+
+	def configuration_options_error
+		@terminal.puts "h for human or c for computer.."
+	end
+
+	def tie
+		@terminal.puts "Tie"
+	end
+
+	def winner(player)
+		@terminal.puts "The winner is: #{player}"
+	end
+
+	def clear
+		@terminal.puts `clear`
+	end
+
 
 	private
 
 	attr_reader :vertical_separator
 	attr_reader :horizontal_separator
-	attr_reader :output_interface
 	attr_reader :boxes_displayed
 	attr_reader :empty
 

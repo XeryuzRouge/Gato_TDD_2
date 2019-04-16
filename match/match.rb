@@ -15,15 +15,15 @@ class Match
 		init_output
 		@turn = TurnsExchanger.new(players_config)
 		@board = Board.new
-		@human_input = HumanInput.new(board)
+		@human_input = HumanInput.new(@board)
 		thinking_time = 0
-		@cpu_input = CPUInput.new(board, thinking_time)
-		board.show
+		@cpu_input = CPUInput.new(@board, thinking_time)
 	end
 
 	def start
 		winner = false
     until (turn.match_completed ) || (winner != false) do
+    	show_board(@board.boxes)
 			winner = next_move
 		end
 		results(winner)
@@ -51,11 +51,10 @@ class Match
 
 	def results(winner)
 		if winner == false
-			show "Tie"
-			winner = "Tie"
-			return winner
+			show_tie
+			return "Tie"
 		else
-			show "The winner is: #{winner}"
+			show_winner(winner)
 			return winner
 		end
 	end

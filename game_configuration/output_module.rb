@@ -1,18 +1,39 @@
+require_relative 'terminal_output'
 
 module OutputModule
 
   attr_reader :output_manager
 
-  def init_output(manager = STDOUT)
+  def init_output(manager = TerminalOutput.new())
      @output_manager = manager
   end
 
-  def show(message)
-    @output_manager.puts message
+  def show_board(boxes)
+    @output_manager.board boxes
   end
 
-  def clear_display
-    system "cls"
+  def show_invalid
+    @output_manager.invalid
+  end
+
+  def show_configuration_options(player)
+    @output_manager.configuration_options(player)
+  end
+
+  def show_configuration_options_error
+    @output_manager.configuration_options_error
+  end
+
+  def show_tie
+    @output_manager.tie
+  end
+
+  def show_winner(player)
+    @output_manager.winner(player)
+  end
+
+  def clear
+    @output_manager.clear
   end
 
 end

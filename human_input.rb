@@ -26,7 +26,7 @@ class HumanInput
     if board.available_boxes.include? choice
       board.play_on_box(choice, player)
     else
-      show "\ninvalid box\n"
+      show_invalid
       play(player)
     end
   end

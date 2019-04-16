@@ -15,11 +15,11 @@ RSpec.describe OutputModule do
 
   let(:dummy_class) { DummyClass.new }
 
-  it "should show anything" do
-    fake_output = FakeOutput.new
-    dummy_class.init_output(fake_output)
-    dummy_class.output_anything
-    expect(fake_output.message).to eq ("anything")
-  end
+  #it "should show anything" do
+  #  fake_output = FakeOutput.new
+  #  dummy_class.init_output(fake_output)
+  #  dummy_class.output_anything
+  #  expect(fake_output.message).to eq ("anything")
+  #end
 
 end

@@ -20,8 +20,8 @@ class PlayerConfiguration
     option_selected = " "
     sign = game_config.game_characters(player)
 
-    clear_display
-    show "player #{player}, human or computer? (h/c)"
+    clear
+    show_configuration_options(player)
 
     loop do
       option_selected = receive
@@ -31,7 +31,7 @@ class PlayerConfiguration
           return { player_type: choice, sign: sign} if j == option_selected
         end
       end
-      show "h for human or c for computer.."
+      show_configuration_options_error
     end
 
   end

@@ -28,7 +28,7 @@ RSpec.describe HumanInput do
     then_this_one = "3"
     input.try_these([this_one, then_this_one])
     human_input.play("X")
-    expect(output.message).to eq "\ninvalid box\n"
+    expect(output.message).to eq "invalid box message"
   end
 
 end
