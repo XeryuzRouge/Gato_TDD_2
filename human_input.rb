@@ -1,20 +1,14 @@
 
-require_relative 'game_configuration/output_module'
-require_relative 'game_configuration/input_module'
-
 class HumanInput
-
-  include OutputModule
-  include InputModule
   
   def initialize(board, input, output)
-    init_input(input)
-    init_output(output)
+    @input = input
+    @output = output
     @board = board
   end
 
   def play(player)
-    choice = receive
+    choice = @input.message
     input_filter(choice, player)
   end
 
@@ -26,7 +20,7 @@ class HumanInput
     if board.available_boxes.include? choice
       board.play_on_box(choice, player)
     else
-      show_invalid
+      @output.invalid
       play(player)
     end
   end

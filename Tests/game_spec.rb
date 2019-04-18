@@ -9,10 +9,6 @@ RSpec.describe Game do
   let(:output) { FakeOutput.new }
   let(:player_config) { PlayerConfiguration.new(input, output) }
 
-  before(:each) do
-    player_config.init_input(input)
-  end
-
   it 'should carry out a match' do
 
     input.try_these(["c", "c"])

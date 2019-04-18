@@ -11,11 +11,6 @@ RSpec.describe Match do
   let(:p2) { {:player_type=>:computer, :sign=>"O"} }
   let(:players_config) { {player1: p1, player2: p2} }
 
-  before(:each) do
-    match.init_output(output)
-    match.human_input.init_input(boxes_plays)
-  end
-
   it 'should manage a human vs human match' do
 
     p2[:player_type] = :human 

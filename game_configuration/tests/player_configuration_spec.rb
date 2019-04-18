@@ -8,11 +8,6 @@ RSpec.describe PlayerConfiguration do
   let(:input) { FakeInput.new }
   let(:player_configuration) { PlayerConfiguration.new(input, output) }
 
-  before(:each) do
-    player_configuration.init_output(output)
-    player_configuration.init_input(input)
-  end
-
   it "Should receive player 1 as human" do
     input.this_one("h")
     expected_hash = { :player_type=>:human, :sign=>"X" }

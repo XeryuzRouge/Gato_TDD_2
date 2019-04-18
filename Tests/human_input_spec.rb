@@ -10,11 +10,6 @@ RSpec.describe HumanInput do
   let(:output) { FakeOutput.new }
   let(:human_input) { HumanInput.new(board, input, output) }
 
-  before(:each) do
-    human_input.init_output(output)
-    human_input.init_input(input)
-  end
-
   it 'should let make a play' do
     input.this_one("2")
     human_input.play("X")

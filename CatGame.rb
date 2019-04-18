@@ -2,6 +2,8 @@ require_relative 'game'
 require_relative 'game_configuration/player_configuration'
 require_relative 'game_configuration/io_managers/remote_input'
 require_relative 'game_configuration/io_managers/remote_output'
+require_relative 'game_configuration/io_managers/terminal_input'
+require_relative 'game_configuration/io_managers/terminal_output'
 
 begin
   input = TerminalInput.new()

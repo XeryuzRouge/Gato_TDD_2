@@ -1,18 +1,14 @@
-
 require_relative '../board/board'
 require_relative 'turns_exchanger'
 require_relative '../human_input'
 require_relative '../cpu/cpu_input'
-require_relative '../game_configuration/output_module'
 
 class Match
 
   attr_reader :human_input
 
-  include OutputModule
-  
   def initialize(players_config, input, output)
-    init_output(output)
+    @output = output
     @turn = TurnsExchanger.new(players_config)
     @board = Board.new
     @human_input = HumanInput.new(@board, input, output)
@@ -23,7 +19,7 @@ class Match
   def start
     winner = false
     until (turn.match_completed ) || (winner != false) do
-      show_board(@board.boxes)
+      @output.board(@board.boxes)
       winner = next_move
     end
     results(winner)
@@ -51,10 +47,10 @@ class Match
 
   def results(winner)
     if winner == false
-      show_tie
+      @output.tie
       return "Tie"
     else
-      show_winner(winner)
+      @output.winner(winner)
       return winner
     end
   end
