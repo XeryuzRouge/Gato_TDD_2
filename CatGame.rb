@@ -7,7 +7,7 @@ begin
 	input = TerminalInput.new()
 	output = TerminalOutput.new()
 
-	if ARGV[0] == "--io-r"
+	if ARGV[0] == "remoteIO"
 		input = RemoteInput.new()
 		output = RemoteOutput.new()
 	end

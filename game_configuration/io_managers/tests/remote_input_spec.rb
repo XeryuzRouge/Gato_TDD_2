@@ -1,5 +1,5 @@
 require_relative '../remote_input'
-require_relative '../../tests/tdd_classes'
+require_relative '../../../Tests/tdd_classes'
 
 RSpec.describe RemoteInput do
 

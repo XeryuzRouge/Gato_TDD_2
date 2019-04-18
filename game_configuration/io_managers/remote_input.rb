@@ -8,9 +8,9 @@ class RemoteInput
 	def message
 		message = ""
 		
-		until message != ""
-			sleep(1)
-			message = read(@file_path)
+  until message != ""
+    sleep(1)
+		message = read(@file_path)
     end
 
     clear(@file_path)

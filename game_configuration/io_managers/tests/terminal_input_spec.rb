@@ -1,5 +1,5 @@
 require_relative '../terminal_input'
-require_relative '../../tests/tdd_classes'
+require_relative '../../../Tests/tdd_classes'
 
 RSpec.describe TerminalInput do
 

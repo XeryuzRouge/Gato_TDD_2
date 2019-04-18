@@ -1,6 +1,5 @@
-
 require_relative '../terminal_output'
-require_relative '../../tests/tdd_classes'
+require_relative '../../../Tests/tdd_classes'
 
 RSpec.describe TerminalOutput do
   let(:empty) { " " }

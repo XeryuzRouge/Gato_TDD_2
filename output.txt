@@ -1,1 +1,1 @@
-winner O
+configuration_options player 1
