@@ -1,12 +1,12 @@
 
 class TerminalInput
 
-	def initialize(terminal = STDIN)
-		@terminal = terminal
-	end
+  def initialize(terminal = STDIN)
+    @terminal = terminal
+  end
 
-	def message
-		 @terminal.gets.chomp
-	end
+  def message
+     @terminal.gets.chomp
+  end
 
 end

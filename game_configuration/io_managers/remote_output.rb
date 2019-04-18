@@ -2,51 +2,51 @@
 class RemoteOutput
 
   def initialize(file_path = 'output.txt')
-		@file_path = file_path
-	end
+    @file_path = file_path
+  end
 
-	def configuration_options(player)
+  def configuration_options(player)
     write("configuration_options player #{player}")
-	end
+  end
 
-	def configuration_options_error
+  def configuration_options_error
     write("configuration_options_error")
-	end
+  end
 
   def board(boxes)
-  	write("board: " + formatted(boxes))
+    write("board: " + formatted(boxes))
   end
 
   def invalid
-  	write("invalid")
+    write("invalid")
   end
 
   def winner(player)
-  	 write("winner #{player}")
+     write("winner #{player}")
   end
 
   def tie
-  	 write("tie")
+     write("tie")
   end
 
-	private
+  private
 
-	def write(message)
-		@text_file = File.open(@file_path, 'w')
-		clear_content
+  def write(message)
+    @text_file = File.open(@file_path, 'w')
+    clear_content
 
     @text_file.write(message)
     @text_file.close
-	end
+  end
 
-	def clear_content
-		@text_file.truncate(0)
-	end
+  def clear_content
+    @text_file.truncate(0)
+  end
 
-	def formatted(boxes)
-		board = boxes.map{|k,v| "#{k}=#{v}"}.join("|")
-		board = board.sub!("4", "&4")
-		board = board.sub!("1", "&1")
-	end
+  def formatted(boxes)
+    board = boxes.map{|k,v| "#{k}=#{v}"}.join("|")
+    board = board.sub!("4", "&4")
+    board = board.sub!("1", "&1")
+  end
 
 end

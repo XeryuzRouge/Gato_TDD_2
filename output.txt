@@ -1,1 +1,1 @@
-configuration_options player 1
+tie

@@ -1,35 +1,35 @@
 
 class RemoteInput
 
-	def initialize(file_path = 'input.txt')
-		@file_path = file_path
-	end
+  def initialize(file_path = 'input.txt')
+    @file_path = file_path
+  end
 
-	def message
-		message = ""
-		
+  def message
+    message = ""
+    
   until message != ""
     sleep(1)
-		message = read(@file_path)
+    message = read(@file_path)
     end
 
     clear(@file_path)
     return message
-	end
+  end
 
-	private
+  private
 
-	def read(file_path)
-  	text_file = File.open(file_path, 'r')
+  def read(file_path)
+    text_file = File.open(file_path, 'r')
     message = text_file.read()
     text_file.close
-  	message
+    message
   end
 
   def clear(file_path)
-  	text_file = File.open(file_path, 'w')
-  	text_file.truncate(0)
-  	text_file.close()
+    text_file = File.open(file_path, 'w')
+    text_file.truncate(0)
+    text_file.close()
   end
 
 end

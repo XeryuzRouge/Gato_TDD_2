@@ -3,10 +3,10 @@ require_relative '../../../Tests/tdd_classes'
 
 RSpec.describe RemoteInput do
 
-	let(:input_file) { "input.txt" }
+  let(:input_file) { "input.txt" }
   let(:remote_input) { RemoteInput.new(input_file) }
 
-	it 'Should get text file content' do
+  it 'Should get text file content' do
     write_input_file("input")
     expect(remote_input.message).to eq "input"
   end

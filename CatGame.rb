@@ -4,15 +4,15 @@ require_relative 'game_configuration/io_managers/remote_input'
 require_relative 'game_configuration/io_managers/remote_output'
 
 begin
-	input = TerminalInput.new()
-	output = TerminalOutput.new()
+  input = TerminalInput.new()
+  output = TerminalOutput.new()
 
-	if ARGV[0] == "remoteIO"
-		input = RemoteInput.new()
-		output = RemoteOutput.new()
-	end
+  if ARGV[0] == "remoteIO"
+    input = RemoteInput.new()
+    output = RemoteOutput.new()
+  end
 
 
-	Game.new(PlayerConfiguration.new(input, output))
+  Game.new(PlayerConfiguration.new(input, output))
 
 end
