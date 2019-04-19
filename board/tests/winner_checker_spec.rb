@@ -8,7 +8,6 @@ RSpec.describe WinnerChecker do
   let(:board) { Board.new }
 
   it "Should recognize if a player has won the match" do
-
     player_x = "X"
     player_o = "O"
     board.play_on_box("7", player_x)
@@ -27,7 +26,6 @@ RSpec.describe WinnerChecker do
     player_boxes = board.player_boxes(player_x)
 
     expect(winner_checker.analyze_board(player_boxes, player_x, winning_combos)).to eq "X"
-
   end
 
 end

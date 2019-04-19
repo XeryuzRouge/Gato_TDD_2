@@ -12,7 +12,6 @@ RSpec.describe Match do
   let(:players_config) { {player1: p1, player2: p2} }
 
   it 'should manage a human vs human match' do
-
     p2[:player_type] = :human 
 
     boxes_plays.try_these(["7", "8", "4", "5", "1"])
@@ -22,7 +21,6 @@ RSpec.describe Match do
   end
 
   it "should manage a human vs cpu match & should recognize players sign modification" do
-
     boxes_plays.try_these(["1", "2", "6"])
 
     match.start
@@ -30,7 +28,6 @@ RSpec.describe Match do
   end
 
   it 'should manage a cpu vs cpu match' do
-
      p1[:player_type] = :computer 
 
     match.start

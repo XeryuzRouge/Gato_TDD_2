@@ -10,11 +10,11 @@ class Board
   def initialize
     @empty = " "
     @boxes = { "7" => empty, "8" => empty, "9" => empty,
-               "4" => empty, "5" => empty, "6" => empty,
-               "1" => empty, "2" => empty, "3" => empty }
+        "4" => empty, "5" => empty, "6" => empty,
+        "1" => empty, "2" => empty, "3" => empty }
 
     @winning_combos = [[7, 4, 1], [7, 8, 9], [7, 5, 3], [8, 5, 2], [9, 6, 3],
-                      [4, 5, 6], [1, 2, 3], [1, 5, 9]]
+        [4, 5, 6], [1, 2, 3], [1, 5, 9]]
   end
 
   def play_on_box(selected_box, current_player)

@@ -1,3 +1,4 @@
+
 require_relative 'match/match'
 
 class Game
@@ -18,8 +19,8 @@ class Game
   end
 
   def new_match
-     new_match = Match.new(players_config, @input, @output)
-     @result = new_match.start
+    new_match = Match.new(players_config, @input, @output)
+    @result = new_match.start
   end
 
 end

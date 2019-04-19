@@ -1,1 +1,1 @@
-board: 7=X|8= |9= |&4=O|5=O|6=X|&1=X|2= |3=O
+configuration_options player 1

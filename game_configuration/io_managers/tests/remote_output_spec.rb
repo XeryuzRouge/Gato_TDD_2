@@ -1,3 +1,4 @@
+
 require_relative '../remote_output'
 require_relative '../../../Tests/tdd_classes'
 
@@ -27,11 +28,11 @@ RSpec.describe RemoteOutput do
   it 'Should write board status' do
     remote_output.board(empty_boxes)
     expect(output_file_content).to eq "" +
-     "board: 7= |8= |9= |&4= |5= |6= |&1= |2= |3= "
+        "board: 7= |8= |9= |&4= |5= |6= |&1= |2= |3= "
 
     remote_output.board(played_boxes)
     expect(output_file_content).to eq "" +
-      "board: 7=X|8= |9= |&4= |5=X|6= |&1=O|2= |3=O"
+        "board: 7=X|8= |9= |&4= |5=X|6= |&1=O|2= |3=O"
   end
 
   it 'Should write invalid box message' do

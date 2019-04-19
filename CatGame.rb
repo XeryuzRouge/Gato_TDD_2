@@ -1,3 +1,4 @@
+
 require_relative 'game'
 require_relative 'game_configuration/player_configuration'
 require_relative 'game_configuration/io_managers/remote_input'

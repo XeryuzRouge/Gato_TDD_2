@@ -3,11 +3,8 @@ require_relative '../turns_exchanger'
 
 RSpec.describe TurnsExchanger do
 
-
   let(:turns) {TurnsExchanger.new(players)}
-
   let(:players) { {player1: player_1, player2: player_2} }
-
   let(:player_1) { {sign: "X", config: :human} }
   let(:player_2) { {sign: "O", config: :computer} }
 

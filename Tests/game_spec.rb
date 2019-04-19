@@ -10,11 +10,9 @@ RSpec.describe Game do
   let(:player_config) { PlayerConfiguration.new(input, output) }
 
   it 'should carry out a match' do
-
     input.try_these(["c", "c"])
     game = Game.new(player_config)
     expect(game.result).to eq "Tie"
-
   end
 
 end

@@ -1,3 +1,4 @@
+
 require_relative '../board/board'
 require_relative 'turns_exchanger'
 require_relative '../human_input'

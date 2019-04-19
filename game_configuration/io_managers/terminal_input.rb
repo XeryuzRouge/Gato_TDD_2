@@ -6,7 +6,7 @@ class TerminalInput
   end
 
   def message
-     @terminal.gets.chomp
+    @terminal.gets.chomp
   end
 
 end

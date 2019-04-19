@@ -1,3 +1,4 @@
+
 require_relative 'game_configuration'
 
 class PlayerConfiguration
@@ -10,8 +11,6 @@ class PlayerConfiguration
     @input = input
     @output = output
     
-    @input = input
-    @output = output
     @game_config = GameConfiguration.new
   end
 
@@ -22,12 +21,16 @@ class PlayerConfiguration
 
     loop do
       option_selected = @input.message
+      
       game_config.players_characters.each do |i|
         choice = i[0]
+
         i[1].each do |j|
           return { player_type: choice, sign: sign} if j == option_selected
         end
+
       end
+
       @output.configuration_options_error
     end
 

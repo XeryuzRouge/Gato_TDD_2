@@ -1,3 +1,4 @@
+
 require_relative '../terminal_output'
 require_relative '../../../Tests/tdd_classes'
 
@@ -42,7 +43,6 @@ RSpec.describe TerminalOutput do
   end
 
   it 'Should display intuitive board at the first turn of the match' do
-
     example_boxes = { "7" => empty, "8" => empty, "9" => empty,
                       "4" => empty, "5" => empty, "6" => empty,
                       "1" => empty, "2" => empty, "3" => empty }
@@ -56,11 +56,9 @@ RSpec.describe TerminalOutput do
     terminal.board(example_boxes)
 
     expect(fake_stdout.message).to eq expected_board
-
   end
 
   it 'Should clear the empty boxes' do
-
     example_boxes = { "7" => empty, "8" => empty, "9" => empty,
                       "4" => empty, "5" => empty, "6" => empty,
                       "1" => empty, "2" => empty, "3" => empty }
@@ -76,11 +74,9 @@ RSpec.describe TerminalOutput do
     terminal.board(example_boxes)
 
     expect(fake_stdout.message).to eq expected_board
-
   end
 
   it 'Should display board with current boxes' do
-
     terminal.clear_boxes
 
     example_boxes = { "7" => :'X', "8" => empty, "9" => :'O',
