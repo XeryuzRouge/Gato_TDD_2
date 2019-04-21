@@ -21,8 +21,8 @@ class RemoteOutput
     write("invalid")
   end
 
-  def winner(player)
-     write("winner #{player}")
+  def winner(player, boxes)
+     write("winner #{player}" + formatted(boxes))
   end
 
   def tie

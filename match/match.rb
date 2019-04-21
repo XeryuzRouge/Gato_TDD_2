@@ -23,7 +23,7 @@ class Match
       @output.board(@board.boxes)
       winner = next_move
     end
-    results(winner)
+    results(winner, @board.boxes)
   end
 
   private
@@ -46,12 +46,12 @@ class Match
 
   end
 
-  def results(winner)
+  def results(winner, board)
     if winner == false
       @output.tie
       return "Tie"
     else
-      @output.winner(winner)
+      @output.winner(winner, board)
       return winner
     end
   end

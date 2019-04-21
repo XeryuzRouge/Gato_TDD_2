@@ -1,1 +1,1 @@
-configuration_options player 1
+winner O7=X|8= |9= |&4=O|5=O|6=O|&1=X|2=X|3= 

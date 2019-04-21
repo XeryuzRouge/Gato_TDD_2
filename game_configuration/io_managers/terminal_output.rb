@@ -57,14 +57,14 @@ class TerminalOutput
     @terminal.puts "Tie"
   end
 
-  def winner(player)
+  def winner(player, boxes)
+    board(boxes)
     @terminal.puts "The winner is: #{player}"
   end
 
   def clear
     @terminal.puts `clear`
   end
-
 
   private
 
