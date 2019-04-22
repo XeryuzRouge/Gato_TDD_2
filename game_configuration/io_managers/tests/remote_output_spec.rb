@@ -36,20 +36,25 @@ RSpec.describe RemoteOutput do
   end
 
   it 'Should write invalid box message' do
-    remote_output.invalid
-    expect(output_file_content).to eq "invalid"
+    remote_output.invalid(played_boxes)
+    expect(output_file_content).to eq "invalid: " +
+        "7=X|8= |9= |&4= |5=X|6= |&1=O|2= |3=O"
   end
 
-  it 'Should write winner' do
-    remote_output.winner("X")
-    expect(output_file_content).to eq "winner X"
-    remote_output.winner("someone else")
-    expect(output_file_content).to eq "winner someone else"
+  it 'Should write winner and board status' do
+    remote_output.winner("X", x_winner_boxes)
+    expect(output_file_content).to eq "winner X: " +
+        "7=X|8= |9=O|&4= |5=X|6= |&1=O|2= |3=X"
+
+    remote_output.winner("O", x_winner_boxes)
+    expect(output_file_content).to eq "winner O: " +
+        "7=X|8= |9=O|&4= |5=X|6= |&1=O|2= |3=X"
   end
 
   it 'Should write tie' do
-    remote_output.tie
-    expect(output_file_content).to eq "tie"
+    remote_output.tie(played_boxes)
+    expect(output_file_content).to eq "tie: " +
+        "7=X|8= |9= |&4= |5=X|6= |&1=O|2= |3=O"
   end
 
   private
@@ -71,6 +76,13 @@ RSpec.describe RemoteOutput do
     { "7" => "X", "8" => empty, "9" => empty,
       "4" => empty, "5" => "X", "6" => empty,
       "1" => "O", "2" => empty, "3" => "O" }
+  end
+
+  def x_winner_boxes
+    empty = " "
+    { "7" => "X", "8" => empty, "9" => "O",
+      "4" => empty, "5" => "X", "6" => empty,
+      "1" => "O", "2" => empty, "3" => "X" }
   end
 
 end

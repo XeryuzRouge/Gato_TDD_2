@@ -41,7 +41,7 @@ class TerminalOutput
     @boxes_displayed.each { |k,v| @boxes_displayed[k] = @empty }
   end
 
-  def invalid
+  def invalid(boxes)
     @terminal.puts "\ninvalid box\n"
   end
 
@@ -53,7 +53,7 @@ class TerminalOutput
     @terminal.puts "h for human or c for computer.."
   end
 
-  def tie
+  def tie(boxes)
     @terminal.puts "Tie"
   end
 

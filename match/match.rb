@@ -48,7 +48,7 @@ class Match
 
   def results(winner, board)
     if winner == false
-      @output.tie
+      @output.tie(board)
       return "Tie"
     else
       @output.winner(winner, board)

@@ -17,16 +17,16 @@ class RemoteOutput
     write("board: " + formatted(boxes))
   end
 
-  def invalid
-    write("invalid")
+  def invalid(boxes)
+    write("invalid: " + formatted(boxes))
   end
 
   def winner(player, boxes)
-     write("winner #{player}" + formatted(boxes))
+    write("winner #{player}: " + formatted(boxes))
   end
 
-  def tie
-     write("tie")
+  def tie(boxes)
+     write("tie: " + formatted(boxes))
   end
 
   private

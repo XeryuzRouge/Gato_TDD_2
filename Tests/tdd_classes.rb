@@ -37,7 +37,7 @@ class FakeOutput
     @messages << boxes
   end
 
-  def invalid
+  def invalid(boxes)
     @messages << "invalid box message"
   end
 
@@ -49,11 +49,11 @@ class FakeOutput
     @messages << "configuration options error message"
   end
 
-  def tie
+  def tie(boxes)
     @messages << "tie message"
   end
 
-  def winner(player)
+  def winner(player, boxes)
     @messages << "Winner message #{player}"
   end
 

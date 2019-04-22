@@ -20,7 +20,7 @@ class HumanInput
     if board.available_boxes.include? choice
       board.play_on_box(choice, player)
     else
-      @output.invalid
+      @output.invalid(@board.boxes)
       play(player)
     end
   end
